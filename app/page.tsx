@@ -2,7 +2,7 @@ import Stats from "@/Components/Stats";
 import { DataTable } from "@/Components/data-table";
 import getAllCryptos from "@/lib/getAllCryptos";
 import getAllStats from "@/lib/getAllStats";
-import { columns } from "./colums";
+import { columns } from "../Components/colums";
 
 export default async function Home() {
   const [AllData, GlobalStats] = await Promise.all([

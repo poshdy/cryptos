@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Poppins} from "next/font/google";
+import { Poppins } from "next/font/google";
 import Nav from "@/Components/Nav";
 import { Metadata } from "next";
 import NeonCircles from "@/Components/NeonCircles";
@@ -22,18 +22,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning={true} >
+    <html lang="en" suppressHydrationWarning={true}>
       <body
         className={`min-h-screen bg-background font-sans antialiased ${poppins.className}`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <SWRProvider>
-            <Nav />
-            <NeonCircles />
-            <main className={"container duration-500 ease-in-out"}>
-              {children}
-            </main>
-          </SWRProvider>
+          <Nav />
+          <NeonCircles />
+          <main className={"container duration-500 ease-in-out"}>
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>
