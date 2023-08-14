@@ -7,12 +7,12 @@ import { Suspense } from "react";
 import Loader from "@/Components/Loader";
 
 export default async function Home() {
-  const AllData = getAllCryptos();
-  const CoinData =   await AllData;
-  const coins: Coins[] = CoinData.data.coins;
-  const GlobalStats = getAllStats();
-   const GLOBAL_Stats = await GlobalStats;
-  const stats: Stats = GLOBAL_Stats.data;
+  const [AllData, GlobalStats] = await Promise.all([
+    getAllCryptos(),
+    getAllStats(),
+  ]);
+  const coins: Coins[] = AllData;
+  const stats: Stats = GlobalStats.data;
 
   return (
     <main className="my-10">
@@ -28,7 +28,7 @@ export default async function Home() {
         </div>
       </section>
       <section className="p-6 bg-muted rounded-xl grid grid-cols-1 gap-2 justify-items-center ">
-        <Suspense fallback={<Loader/>}>
+        <Suspense fallback={<Loader />}>
           <DataTable columns={columns} data={coins} />
         </Suspense>
       </section>
