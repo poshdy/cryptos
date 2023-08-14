@@ -8,10 +8,8 @@ export default async function getCoin(uuid: string , timepriod:string ){
             'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
         }
     })
-    // if(!res.ok){
-    //     throw new Error(res.statusText)
-    // }
+
     console.log(res.status)
-    // console.log(res.json())
+
  return await res.json()
 }

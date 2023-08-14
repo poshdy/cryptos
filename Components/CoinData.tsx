@@ -19,7 +19,6 @@ const CoinData = ({ coin, timePeriod, uuid }: PropType) => {
   };
   const { data , isLoading } = useSWR("coinhistory", fetcher,{
     fallbackData:`/api/coinhistory?uuid=${uuid}$timePeriod=24h`,
-    refreshInterval:(()=>500)
   });
 
   const CoinHistory: CoinHistory = data?.data;

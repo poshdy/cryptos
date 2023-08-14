@@ -3,8 +3,6 @@ import { DataTable } from "@/Components/data-table";
 import getAllCryptos from "@/lib/getAllCryptos";
 import getAllStats from "@/lib/getAllStats";
 import { columns } from "./colums";
-import { Suspense } from "react";
-import Loader from "@/Components/Loader";
 
 export default async function Home() {
   const [AllData, GlobalStats] = await Promise.all([
@@ -28,9 +26,7 @@ export default async function Home() {
         </div>
       </section>
       <section className="p-6 bg-muted rounded-xl grid grid-cols-1 gap-2 justify-items-center ">
-        <Suspense fallback={<Loader />}>
-          <DataTable columns={columns} data={coins} />
-        </Suspense>
+        <DataTable columns={columns} data={coins} />
       </section>
     </main>
   );

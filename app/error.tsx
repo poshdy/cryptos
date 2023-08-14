@@ -25,6 +25,7 @@ export default function Error({
       >
         Try again
       </button>
+      <p>{error.message || 'something went wrong please try again'}</p>
     </div>
   )
 }
