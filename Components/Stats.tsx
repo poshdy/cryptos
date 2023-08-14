@@ -15,7 +15,7 @@ const Stats = ({
     <div className="lg:w-[50%] w-full h-[200px] grid grid-cols-3 bg-muted  gap-3 rounded-xl p-4 ">
       <div className={classname}>
         <h4 className={textStyle}>Coins</h4>
-        <h2 className={noStyle}>{millify(totalCoins)}</h2>
+        <h3 className={noStyle}>{millify(totalCoins)}</h3>
       </div>
       <div className={classname}>
         <h4 className={textStyle}>Martkets</h4>

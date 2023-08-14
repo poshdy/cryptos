@@ -22,7 +22,7 @@ const Nav = () => {
             <Link className="text-sm font-semibold" href={`/`}>
               Cryptocurrenies
             </Link>
-            <Link className="text-sm font-semibold" href={`/news`}>
+            <Link className="text-sm font-semibold" href={'/news'}>
               News
             </Link>
           </div>
