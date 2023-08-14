@@ -15,7 +15,7 @@ const Newspage = async () => {
             <Image loading="lazy" width={200} height={200} alt="news" src={cryptoImage} />
             <div className="flex flex-col items-center md:items-start gap-2 h-full">
             {article.provider.map((provider)=>(
-              <p className="text-orange-400 text-base font-bold uppercase">{provider.name}</p>
+              <p key={provider.datePublished} className="text-orange-400 text-base font-bold uppercase">{provider.name}</p>
             ))}
             <a href={article.url} target="_blank" className="font-bold text-center md:text-left text-lg">
               {article.name.slice(0, 100)}
