@@ -11,7 +11,7 @@ const Newspage = async () => {
       <h1 className="text-3xl text-center md:text-left font-extrabold leading-tight mb-2 tracking-tighter md:text-4xl my-4">Trending News</h1>
       <div className="grid grid-cols-1 lg:grid-cols-2 content-center justify-items-center gap-3 my-4">
         {News.value.map((article) => (
-          <div className="flex flex-col md:flex-row items-center gap-1">
+          <div key={article.name} className="flex flex-col md:flex-row items-center gap-1">
             <Image loading="lazy" width={200} height={200} alt="news" src={cryptoImage} />
             <div className="flex flex-col items-center md:items-start gap-2 h-full">
             {article.provider.map((provider)=>(
