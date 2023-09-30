@@ -2,7 +2,6 @@ import "./globals.css";
 import { Poppins } from "next/font/google";
 import Nav from "@/Components/Nav";
 import { Metadata } from "next";
-import NeonCircles from "@/Components/NeonCircles";
 import { ThemeProvider } from "@/Components/Providers/theme-provider";
 import Stats from "@/Components/Stats";
 
