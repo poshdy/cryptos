@@ -1,32 +1,40 @@
-import Stats from "@/Components/Stats";
 import { DataTable } from "@/Components/data-table";
 import getAllCryptos from "@/lib/getAllCryptos";
 import getAllStats from "@/lib/getAllStats";
 import { columns } from "../Components/colums";
+import NewestCoins from "@/Components/NewestCoins";
+import { Suspense } from "react";
+import TableSkelton from "@/Components/Skeletons/TableSkelton";
+import NewSkeleton from "@/Components/Skeletons/NewSkeleton";
 
 export default async function Home() {
-  const [AllData, GlobalStats] = await Promise.all([
+  const [AllData, NewAndBestCoins] = await Promise.all([
     getAllCryptos(),
     getAllStats(),
   ]);
   const coins: Coins[] = AllData;
-  const stats: Stats = GlobalStats.data;
 
   return (
-    <main className="my-10">
-      <h1 className="text-3xl font-extrabold leading-tight mb-2 tracking-tighter md:text-4xl">
-        Global Stats
+    <main className="space-y-5 my-10 container">
+      <h1 className="leading-3 tracking-tighter text-4xl font-bold">
+        Today's Cryptocurrency Prices by Market Cap
       </h1>
-      <section className="flex flex-col lg:flex-row items-center gap-4 mb-6 lg:justify-between">
-        <Stats {...stats} />
-        <div className="lg:w-[50%] w-full h-[200px] bg-muted p-4 rounded-xl ">
-          <h1 className="text-4xl leading-tight tracking-tighter font-extrabold">
-            Get all Crypto Stats, Details,News All in one Place
-          </h1>
-        </div>
-      </section>
-      <section className="p-6 bg-muted rounded-xl grid grid-cols-1 gap-2 justify-items-center ">
+      <Suspense fallback={<TableSkelton />}>
         <DataTable columns={columns} data={coins} />
+      </Suspense>
+      <section className="flex gap-4  bg-muted rounded-2xl p-2">
+        <Suspense fallback={<NewSkeleton />}>
+          <NewestCoins
+            title="Best coins"
+            data={NewAndBestCoins?.data?.bestCoins}
+          />
+        </Suspense>
+        <Suspense fallback={<NewSkeleton />}>
+          <NewestCoins
+            title="Newest coins"
+            data={NewAndBestCoins?.data?.newestCoins}
+          />
+        </Suspense>
       </section>
     </main>
   );

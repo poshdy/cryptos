@@ -22,7 +22,7 @@ ChartJS.register(
 );
 const LineChart = ({ CoinHistory }: { CoinHistory: CoinHistory }) => {
   const TIME_STAPAMPS = CoinHistory?.history?.reverse().map((ts) => {
-    return new Date(ts.timestamp * 1000).toLocaleDateString();
+    return new Date(ts.timestamp * 1000).toISOString().slice(11, 19);
   });
 
   const coinPrice = CoinHistory?.history?.map((pri) => pri.price);
@@ -34,7 +34,7 @@ const LineChart = ({ CoinHistory }: { CoinHistory: CoinHistory }) => {
         label: "Price In USD",
         data: coinPrice,
         fill: false,
-        backgroundColor: "#FFA842",
+        // backgroundColor: "#000",
         borderColor: "#FF961B",
       },
     ],
@@ -48,11 +48,7 @@ const LineChart = ({ CoinHistory }: { CoinHistory: CoinHistory }) => {
     },
   };
 
-  return (
-    <div className="flex items-center justify-center w-full my-4">
-      <Line data={data} options={options} />
-    </div>
-  );
+  return <Line data={data} options={options}  />;
 };
 
 export default LineChart;

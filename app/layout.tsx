@@ -4,7 +4,7 @@ import Nav from "@/Components/Nav";
 import { Metadata } from "next";
 import NeonCircles from "@/Components/NeonCircles";
 import { ThemeProvider } from "@/Components/Providers/theme-provider";
-import { SWRProvider } from "@/Components/Providers/Swr-provider";
+import Stats from "@/Components/Stats";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,10 +26,10 @@ export default function RootLayout({
       <body
         className={`min-h-screen bg-background font-sans antialiased ${poppins.className}`}
       >
+        <Nav />
+        <Stats />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Nav />
-          <NeonCircles />
-          <main className={"container duration-500 ease-in-out"}>
+          <main className={"relative duration-500 ease-in-out "}>
             {children}
           </main>
         </ThemeProvider>

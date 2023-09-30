@@ -5,7 +5,7 @@ import Link from "next/link";
 import { PiCurrencyEthDuotone } from "react-icons/pi";
 const Nav = () => {
   return (
-    <header className="sticky bg-background top-0 w-full h-16 flex justify-center items-center outline-dashed outline-1 outline-accent-foreground ">
+    <header className="bg-background w-full h-20 flex items-center justify-center ">
       <nav className="container justify-between flex items-center">
         <div className="flex flex-col md:flex-row  items-center md:justify-between w-[30%] gap-1">
           <Link
@@ -18,11 +18,11 @@ const Nav = () => {
             />
             Cryptos
           </Link>
-          <div className="flex items-center gap-3">
-            <Link className="text-sm font-semibold" href={`/`}>
+          <div className="flex items-center gap-3 font-medium">
+            <Link className="text-sm" href={`/`}>
               Cryptocurrenies
             </Link>
-            <Link className="text-sm font-semibold" href={'/news'}>
+            <Link className="text-sm" href={'/news'}>
               News
             </Link>
           </div>

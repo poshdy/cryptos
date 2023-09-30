@@ -5,11 +5,10 @@ import millify from "millify";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/Components/ui/button";
-import { ArrowUpDown, MoreHorizontal } from "lucide-react"
-
+import { ArrowUpDown } from "lucide-react";
+import { Sparklines, SparklinesLine, SparklinesSpots } from "react-sparklines";
 
 export const columns: ColumnDef<Coins>[] = [
- 
   {
     accessorKey: "rank",
     header: "rank",
@@ -47,17 +46,17 @@ export const columns: ColumnDef<Coins>[] = [
           price
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
-      )
+      );
     },
-    cell:({row})=>{
-        const amount = parseFloat(row.getValue("price"))
-        const formatted = new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: "USD",
-        }).format(amount)
-   
-        return <div className="font-medium">{formatted}</div>
-    }
+    cell: ({ row }) => {
+      const amount = parseFloat(row.getValue("price"));
+      const formatted = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+      }).format(amount);
+
+      return <div className="font-medium">{formatted}</div>;
+    },
   },
   {
     accessorKey: "24hVolume",
@@ -84,6 +83,21 @@ export const columns: ColumnDef<Coins>[] = [
       const amount = millify(row.getValue("change"));
 
       return <div className="text-center font-medium">{amount}%</div>;
+    },
+  },
+  {
+    accessorKey: "sparkline",
+
+    header: () => <div className="text-center">last 7 Days</div>,
+    cell: ({ row, cell }) => {
+      const data: any[] = row.getValue("sparkline");
+
+      return (
+        <Sparklines data={data}>
+          <SparklinesLine style={{ fill: "orange" }} />
+          <SparklinesSpots size={2} />
+        </Sparklines>
+      );
     },
   },
 ];
