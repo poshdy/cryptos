@@ -17,7 +17,7 @@ export default async function Home() {
   return (
     <main className="space-y-5 my-10 container">
       <h1 className="leading-3 tracking-tighter text-4xl font-bold">
-        Today's Cryptocurrency Prices by Market Cap
+        Today`&apos;`s Cryptocurrency Prices by Market Cap
       </h1>
       <Suspense fallback={<TableSkelton />}>
         <DataTable columns={columns} data={coins} />
