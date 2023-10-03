@@ -8,10 +8,10 @@ import getCoin from "@/lib/getCoin";
 const page = async ({ params }: { params: { uuid: string } }) => {
   const coin = await getCoin(params?.uuid, "3h");
   return (
-    <section className="relative w-full flex">
+    <section className="relative w-full flex flex-col md:flex-row ">
       <CoinInfo coin={coin?.data?.coin} />
 
-      <section className="min-h-screen container flex-grow space-y-20">
+      <section className="min-h-screen container  space-y-20">
         <Header uuid={params?.uuid} />
         <CoinData uuid={params?.uuid} />
 

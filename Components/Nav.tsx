@@ -1,12 +1,14 @@
+
 import React from "react";
 import SearchBar from "./SearchBar";
 import ThemeChanger from "./use-theme";
 import Link from "next/link";
 import { PiCurrencyEthDuotone } from "react-icons/pi";
+import MobNav from "./MobNav";
 const Nav = () => {
   return (
-    <header className="bg-background w-full h-20 flex items-center justify-center ">
-      <nav className="container justify-between flex items-center">
+    <header className="bg-background w-full h-20 flex items-center justify-center relative">
+      <nav className="container justify-between hidden md:flex items-center">
         <div className="flex flex-col md:flex-row  items-center md:justify-between w-[30%] gap-1">
           <Link
             href={"/"}
@@ -34,6 +36,7 @@ const Nav = () => {
           </div>
         </div>
       </nav>
+      <MobNav/>
     </header>
   );
 };

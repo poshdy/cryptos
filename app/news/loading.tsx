@@ -1,4 +1,3 @@
-import Loader from '@/Components/Loader'
 import { Loader2 } from 'lucide-react'
 import React from 'react'
 

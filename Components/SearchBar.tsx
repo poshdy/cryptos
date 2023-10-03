@@ -28,17 +28,7 @@ const SearchBar = () => {
   const [value, setValue] = React.useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    // e.preventDefault();
-    // const res = await fetch(`/api/coins`);
-    // const coins = await res.json();
-    // const getID = coins.data.coins.filter((coin: COIN) => {
-    //   return (
-    //     coin.name.toLowerCase() === query.toLowerCase() ||
-    //     coin.symbol.toLowerCase() === query.toLowerCase()
-    //   );
-    // });
-    // router.push(`/cryptos/${getID[0].uuid}`);
-    // setQuery("");
+
   };
 
   const Fetcher = async () => {
@@ -49,7 +39,7 @@ const SearchBar = () => {
   const { data, isLoading } = useSWR("api/coin", Fetcher);
   return (
     <>
-      <Popover open={open} onOpenChange={setOpen}>
+      <Popover  open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
             variant="outline"
@@ -63,7 +53,7 @@ const SearchBar = () => {
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[200px] p-0">
+        <PopoverContent className=" md:w-[200px]">
           <Command>
             <CommandInput placeholder="Search framework..." />
             <CommandEmpty>No framework found.</CommandEmpty>
