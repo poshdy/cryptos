@@ -21,20 +21,16 @@ import Link from "next/link";
 import Image from "next/image";
 
 const SearchBar = () => {
-  const [query, setQuery] = useState("");
-  const inputRef = useRef<HTMLInputElement>(null);
-  const router = useRouter();
+
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
-  };
 
   const Fetcher = async () => {
     const res = await fetch("/api/coins");
     const data = await res.json();
-    return data?.data?.coins?.slice(0, 6);
+    return data?.data?.coins?.slice(0, 8);
   };
   const { data, isLoading } = useSWR("api/coin", Fetcher);
   return (
@@ -55,8 +51,8 @@ const SearchBar = () => {
         </PopoverTrigger>
         <PopoverContent className=" md:w-[200px]">
           <Command>
-            <CommandInput placeholder="Search framework..." />
-            <CommandEmpty>No framework found.</CommandEmpty>
+            <CommandInput placeholder="Search Coins..." />
+            <CommandEmpty>No Coin found.</CommandEmpty>
             <CommandGroup>
               {data?.map((coin: COIN) => (
                 <CommandItem

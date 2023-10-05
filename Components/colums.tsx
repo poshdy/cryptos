@@ -60,7 +60,17 @@ export const columns: ColumnDef<Coins>[] = [
   },
   {
     accessorKey: "24hVolume",
-    header: () => <div className="text-center">Volume(24h)</div>,
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Volume(24h)
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
     cell: ({ row }) => {
       const amount = millify(row.getValue("24hVolume"));
 
@@ -69,7 +79,17 @@ export const columns: ColumnDef<Coins>[] = [
   },
   {
     accessorKey: "marketCap",
-    header: () => <div className="text-center">MarketCap</div>,
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Market Cap
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
     cell: ({ row }) => {
       const amount = millify(row.getValue("marketCap"));
 
